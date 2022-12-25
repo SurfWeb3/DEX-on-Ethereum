@@ -2,8 +2,10 @@ const Dex = artifacts.require("Dex")
 const Link = artifacts.require("Link")
 const truffleAssert = require('truffle-assertions');
 
+//THE CONTRACT TEST HAS A SKIP INSTRUCTION AT THIS TIME
 contract.skip("Dex", accounts => {
-    //The user must have ETH deposited such that deposited eth >= buy order value
+        //The user must have enough tokens deposited that token balance >= sell order amount
+
     it("should throw an error if ETH balance is too low when creating BUY limit order", async () => {
         let dex = await Dex.deployed()
         let link = await Link.deployed()
@@ -47,6 +49,8 @@ contract.skip("Dex", accounts => {
         }
     })
     //The SELL order book should be ordered on price from lowest to highest starting at index 0
+        //The SELL order book should be ordered on price from lowest to highest starting at index 0
+
     it("The SELL order book should be ordered on price from lowest to highest starting at index 0", async () => {
         let dex = await Dex.deployed()
         let link = await Link.deployed()
